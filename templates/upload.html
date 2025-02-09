@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <link rel="icon" type="images/png" href="images/youtube-icon.png">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="header">
+        <!-- Header menu Start -->
+
+        <div class="header__left">
+            <i id="menu" class="material-icons">menu</i>
+            <a href="index.html">
+                <img src="https://www.xda-developers.com/files/2017/08/After-12-Years-Google-Gives-YouTube-a-New-Logo-1900x700_c.png" alt="">
+            </a>
+        </div>
+        <!-- Header menu end -->
+
+        <!-- Header seach Start -->
+
+        <div class="header__search">
+            <form action="">
+                <input type="text" placeholder="Search">
+                <button><i class="material-icons">search</i></button>
+            </form>
+        </div>
+        <!-- Header search Start -->
+        
+        <!-- Header Icons Start -->
+        <div class="header__icons">
+            <i class="material-icons display-this">search</i>
+            <i class="material-icons ">videocam</i>
+            <i class="material-icons">apps</i>
+            <i class="material-icons display-this">notifications</i>
+            <a href="channel.html"><i id="drop-down" class="material-icons display-this">account_circle</i></a>
+        </div>
+        <!-- Header Icons Ends -->
+
+    </div>
+
+    <!-- Main Body Starts -->
+    <div class="mainBody">
+        <div class="sidebar">
+            <div class="sidebar__categories">
+                
+                <!-- Single Category -->
+                <a href="index.html">
+                    <div class="sidebar__category">
+                        <i class="material-icons">home</i>
+                        <span>Home</span>
+                    </div>
+                </a>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">local_fire_department</i>
+                    <span>Trending</span>
+                </div>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">subscriptions</i>
+                    <span>Subscriptions</span>
+                </div>
+            </div>
+            <hr>
+            <div class="sidebar__categories">
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">library_add_check</i>
+                    <span>Library</span>
+                </div>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">history</i>
+                    <span>History</span>
+                </div>
+
+                <!-- Single Category -->
+                <a href="channel-videos.html">
+                    <div class="sidebar__category">
+                        <i class="material-icons">play_arrow</i>
+                        <span>Your Videos</span>
+                    </div>
+                </a>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">watch_later</i>
+                    <span>Watch Later</span>
+                </div>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">thumb_up</i>
+                    <span>Liked Videos</span>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <!-- Sidebar Ends -->
+
+        <!-- Video Section Starts -->
+        <div class="videos">
+            <div class="upload-content">
+                <div class="left-video">
+                    <h4>Details</h4>
+                    <div class="input-div">
+                        <span>Title (required) <span id="count"></span> </span><br>
+                        <input id="title" type="text" onkeyup="titleValidate()">
+                        <div class="error-div" id="error-div">
+                            
+                        </div>
+                    </div>
+                    <script>
+                        
+                    </script>
+                    <div class="desc-div">
+                        <span>Description (required) <span id="desc-count"></span> </span> <br>
+                        <textarea name="" id="description" onkeyup="desc_validate()"></textarea>
+
+                    </div>
+                    
+                    <div class="tags-div">
+                        <span>Tags (optional) </span> <br>
+                        <input type="text" >
+                        <p>Seperate Tags with Comma</p>
+                    </div>
+
+                    <div class="video-div file-input" id="file-input">
+                        <small>Thumbnail (required) </small> <br>
+                        <input type="file" class="file">
+                        <!-- <input type='file'> -->
+                        <span class='button'><i class="material-icons">image</i></span>
+                        <span class='label' data-js-label>No image selected</label>
+                        
+                    </div>
+                    
+                    <div class="video-div file-input">
+                        <small>Video (required) </small> <br>
+                        <input type="file" class="file">
+                        <!-- <input type='file'> -->
+                        <span class='button'><i class="material-icons">videocam</i></span>
+                        <span class='label' data-js-label>No video selected</label>
+                        
+                    </div>
+                    <div class="upload-btn-div">
+                        <button class="upload-btn">Publish</button>
+                    </div>
+                </div>
+                <div class="right-video">
+                    <div class="r-thumb">
+                        <div class="uploading-video">
+                            <h5>Uploading Video...</h5>
+                        </div>
+                        <!-- <img src="images/logo.jpg" alt=""> -->
+                        <div class="video-details">
+                                <h5>Video Links</h5>
+                                <a href="">https://youtu.be/Bgstu6u&4</a>
+                            
+                                <h4>Filename</h4>
+                                <span >Video File name here</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="videos__container">
+                
+            </div>
+        </div>
+    </div>
+
+<script src="js/main.js"></script>
+</body>
+</html> 

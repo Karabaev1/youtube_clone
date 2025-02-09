@@ -1,0 +1,62 @@
+<div class="videos">
+    <div class="drop-down-container">
+        <h1>Recommended</h1>
+        <div class="dropdown-content-background show-dropdow">
+            <div class="dropdown-contents">
+                <div class="dropdown-content">
+                    <i class="material-icons">videocam</i>
+                    <span>Create</span>
+                </div>
+                <div class="dropdown-content">
+                    <i class="material-icons">videocam</i>
+                    <span>Create</span>
+                </div>
+                <div class="dropdown-content">
+                    <i class="material-icons">videocam</i>
+                    <span>Create</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    ...
+</div>
+
+
+<style>
+
+
+.drop-down-container{
+    display: flex;
+    
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-content{
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+.dropdown-content-background{
+    background-color: rgb(97, 97, 97);
+    padding: 15px;
+    z-index: 50;
+    display: none;
+    border-radius: 10px;
+    left: 120px;
+}
+.dropdown-content i {
+    margin-right: 5px;
+    color: white;
+}
+.dropdown-content span {
+    color: white;
+}
+
+.show-dropdown{
+    display: inline;
+}
+
+
+
+</style>
