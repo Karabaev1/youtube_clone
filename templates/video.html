@@ -109,11 +109,11 @@
 
                     <div class="details flex border_bottom">
                         <div class="img">
-                            <img src="images/logo.jpg" alt="">
+                            <img src="{{videos.user.channel.image.url}}" alt="">
                         </div>
                         <div class="heading">
-                            <h4>Desphixs <small><i class="fa fa-check-circle"></i></small> </h4>
-                            <span>2.4K Subscribers</span>
+                            <h4>{{ videos.user.channel.channel_name }} {% if videos.user.channel.verified == True %}<small><i class="fa fa-check-circle"></i></small>{% endif %} </h4>
+                            <span>{{ videos.user.channel.subscribers.all.count }} Subscribers</span>
 
                             <h5>{{ videos.description}}</h5>
                             <span> <i class="fa fa-caret-down"></i> show more</span>

@@ -21,13 +21,11 @@ class Channel(models.Model):
     keywords = TaggableManager()
     joined = models.DateTimeField(auto_now_add=True)
     status = models.CharField(choices=STATUS, max_length=100, default="public")
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name="user_user")
-    views = models.ManyToManyField(User, related_name="user_subscriber")
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name="channel")
+    subscribers = models.ManyToManyField(User, related_name="user_sub")
+    verified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.channel_name
 
 
-
-class Channel():
-    pass
