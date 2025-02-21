@@ -1,3 +1,5 @@
+{% load static%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube</title>
     <link rel="icon" type="images/png" href="images/youtube-icon.png">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/single.css" type="text/css">
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/single.css' %}" type="text/css">
 
     <!-- CDNS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
@@ -51,17 +53,21 @@
             <div class="left">
                 <div class="left_content">
                     <video controls>
-                        <source src="video/Desphixs Logo Intro.mp4" type="video/mp4" poster="images/1.jpg">
+                        <source src="{{ videos.video.url }}" type="video/mp4" poster="images/1.jpg">
                     </video>
 
                     <div class="tag">
-                        <label for="" class="tags">#desphixs #frontend #css</label>
-                        <p>Youtube Clone using HTML, CSSS and JS</p>
+                        <label for="" class="tags">
+                            {% for tag in videos.tags.all %}
+                                #{{ tag.name }},
+                            {% endfor %}
+                        </label>
+                        <p>{{ videos.title  }}</p>
                     </div>
 
                     <div class="view flex2 border_bottom">
                         <div class="view-text">
-                            <span>123, 234 Views</span>
+                            <span>{{ videos.views }} Views</span>
                         </div>
 
                         <div class="flex">
@@ -109,7 +115,7 @@
                             <h4>Desphixs <small><i class="fa fa-check-circle"></i></small> </h4>
                             <span>2.4K Subscribers</span>
 
-                            <h5>Youtube Clone suing HTML, CSS, and JS and guess what it'll be responsive</h5>
+                            <h5>{{ videos.description}}</h5>
                             <span> <i class="fa fa-caret-down"></i> show more</span>
                         </div>
                         <div>

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Local Apps
     'core',
     'userauth',
+    'channel',
 
 ]
 
