@@ -127,7 +127,7 @@
 
                     <div class="comment">
                         <div class="comment-heading flex">
-                            <h4>2 Comments</h4>
+                            <h4>{{comment.count }} Comments</h4>
                             <h4><i class="fa fa-list-ul"></i> <label>Sort By</label> </h4>
                         </div>
                     </div>
@@ -136,37 +136,48 @@
                         <div class="img">
                             <img src="images/logo.jpg" alt="">
                         </div>
-                        <div class="heading">
-                            <input type="text" placeholder="Add a comment...">
-                        </div>
+                        {% if request.user.is_authenticated %}
+                        <form action="" style="width: 100%;" id="comment_form">
+                             {% csrf_token %}
+                            <div class="heading flex">
+                                <input type="hidden" value="{{ videos.id }}" id="id" name="id">
+                                <input type="text" placeholder="Add a comment..." id="comment" name="comment">
+                                <button><i class="material-icons">send</i></button>
+                            </div>
+                    </form>
+                        {% else %}
+                            <a href="../../admin/login" style="margin-top: 10px;">Login to Comment</a>
+                        {% endif %}
                     </div>
-
+                
+                    {%for c in comment %}
                     <div class="details_Comment">
                         <div class="details flex">
                             <div class="img">
                                 <img  src="images/logo.jpg" alt="">
                             </div>
                             <div class="heading">
-                                <h4>Jenny Doe <span>17 Months ago</span></h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, quod!</p>
+                                <h4>{{c.user.username|title}} <span>{{c.date|timesince}} ago</span></h4>
+                                <p>{{c.comment}}</p>
                                 <div class="comment-like flex">
                                     <div class="icon">
                                         <i class="fa fa-thumbs-up"></i>
-                                        <label for="">5</label>
+                                        <label for=""><small>2</small></label>
                                     </div>
 
                                     <div class="icon">
                                         <i class="fa fa-thumbs-down"></i>
-                                        <label for="">Dislike</label>
+                                        <label for=""><small>Dislike</small></label>
                                     </div>
 
                                     <div class="icon">
-                                        <label for=""><a href="">Reply</a></label>
+                                        <label for=""><a href=""><small>Reply</small></a></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
 
                     <div class="replay">
                         <label for="" class="tags"><i class="fa fa-caret-up"></i>Hide Reply</label>
@@ -180,6 +191,7 @@
                             </div>
                         </div>
                     </div>
+                    {%endfor%}
                 </div>
             </div>
 
@@ -192,39 +204,19 @@
                         <label for="" class="tags-bg">Frontend</label>
                         <label for="" class="tags-bg">HTML</label>
                     </div>
-
+                    
+                    {% for s in similar_videos %}
                     <div class="video_items vide_sidebar flex">
                         <a href="">
-                            <img src="images/1.jpg" alt="">
+                            <img src="{{ s.image.url}}" alt="">
                         </a>
                         <div class="details">
-                            <p>Youtube CLone using HTML, CSS and JS</p>
-                            <span>Desphixs <i class="fa fa-check-circle"></i></span>
-                            <span>203K Views . 1 Week Ago </span>
+                            <a href="{% url 'video_detail' s.id %}">{{ s.title|truncatechars:20 }}</a><p></p>
+                            <span>{{ s.user.channel.channel_name }} <i class="fa fa-check-circle"></i></span>
+                            <span>{{ s.views }} Views . {{ s.date|timesince }} Ago </span>
                         </div>
                     </div>
-
-                    <div class="video_items vide_sidebar flex">
-                        <a href="">
-                            <img src="images/1.jpg" alt="">
-                        </a>
-                        <div class="details">
-                            <p>Youtube CLone using HTML, CSS and JS</p>
-                            <span>Desphixs <i class="fa fa-check-circle"></i></span>
-                            <span>203K Views . 1 Week Ago </span>
-                        </div>
-                    </div>
-
-                    <div class="video_items vide_sidebar flex">
-                        <a href="">
-                            <img src="images/1.jpg" alt="">
-                        </a>
-                        <div class="details">
-                            <p>Youtube CLone using HTML, CSS and JS</p>
-                            <span>Desphixs <i class="fa fa-check-circle"></i></span>
-                            <span>203K Views . 1 Week Ago </span>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                     
                 </div>
@@ -237,3 +229,10 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
+<script type="text/javascript">
+    $(document).on("submit", "#comment_form", function(e){
+        e.preventDefault();
+        
+    })
+</script>
