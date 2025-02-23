@@ -32,3 +32,21 @@ def video_detail(request, pk):
         "similar_videos": similar_videos
     }
     return render(request, "video.html", context)
+
+
+def ajax_save_comment(request):
+    if request.method == "POST":
+        pk = request.POST.get("id")
+        video = Video.objects.get(id=pk)
+        user = request.user
+        comment = request.POST.get("comment")
+
+        new_comment = Comment.objects.create(comment=comment, user=user, video=video)
+        new_comment.save()
+
+        response = "Comment"
+        return HttpResponse(response)
+
+
+    else:
+        pass
