@@ -234,7 +234,7 @@
     $(document).on("submit", "#comment_form", function(e){
         e.preventDefault();
         let _comment = $("#comment").val()
-        
+
         $.ajax({
             type: "POST",
             url: "{% url 'ajax_save_comment' %}",

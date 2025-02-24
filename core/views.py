@@ -1,5 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.db.models import Count
+
+from channel.models import Channel
 from core.models import Video, Comment
 
 
@@ -46,7 +49,14 @@ def ajax_save_comment(request):
 
         response = "Comment"
         return HttpResponse(response)
-
-
     else:
         pass
+
+
+def add_new_subscribers(request, id):
+    subscribers = Channel.objects.get(id=id)
+    user = request.user
+
+    if user in subscribers.subscribers.all():
+         pass
+
